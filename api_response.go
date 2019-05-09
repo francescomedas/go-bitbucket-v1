@@ -257,13 +257,6 @@ func GetCommitsResponse(r *APIResponse) ([]Commit, error) {
 	return m, err
 }
 
-// GetTagsResponse cast Tags into structure
-func GetTagsResponse(r *APIResponse) ([]Tag, error) {
-	var m []Tag
-	err := mapstructure.Decode(r.Values["values"], &m)
-	return m, err
-}
-
 // GetBranchesResponse cast Tags into structure
 func GetBranchesResponse(r *APIResponse) ([]Branch, error) {
 	var m []Branch
@@ -281,6 +274,34 @@ func GetRepositoriesResponse(r *APIResponse) ([]Repository, error) {
 // GetRepositoryResponse cast Repositories into structure
 func GetRepositoryResponse(r *APIResponse) (Repository, error) {
 	var m Repository
+	err := mapstructure.Decode(r.Values, &m)
+	return m, err
+}
+
+// GetPullRequestsResponse cast PullRequests into structure
+func GetPullRequestsResponse(r *APIResponse) ([]PullRequest, error) {
+	var m []PullRequest
+	err := mapstructure.Decode(r.Values["values"], &m)
+	return m, err
+}
+
+// GetPullRequestResponse cast PullRequests into structure
+func GetPullRequestResponse(r *APIResponse) (PullRequest, error) {
+	var m PullRequest
+	err := mapstructure.Decode(r.Values, &m)
+	return m, err
+}
+
+// GetTagsResponse cast Tags into structure
+func GetTagsResponse(r *APIResponse) ([]Tag, error) {
+	var m []Tag
+	err := mapstructure.Decode(r.Values["values"], &m)
+	return m, err
+}
+
+// GetTagResponse cast Tags into structure
+func GetTagResponse(r *APIResponse) (Tag, error) {
+	var m Tag
 	err := mapstructure.Decode(r.Values, &m)
 	return m, err
 }

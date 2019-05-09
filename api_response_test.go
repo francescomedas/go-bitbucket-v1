@@ -167,6 +167,32 @@ func TestGetRepositoryResponse(t *testing.T) {
 	}
 }
 
+func TestGetTagResponse(t *testing.T) {
+	type args struct {
+		r *APIResponse
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    Tag
+		wantErr bool
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := GetTagResponse(tt.args.r)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("GetTagResponse() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("GetTagResponse() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func TestGetDiffResponse(t *testing.T) {
 	type args struct {
 		r *APIResponse

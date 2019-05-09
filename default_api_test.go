@@ -2272,7 +2272,8 @@ func TestDefaultApiService_GetForkedRepositories(t *testing.T) {
 		client *APIClient
 	}
 	type args struct {
-		projectKey string
+		projectKey     string
+		repositorySlug string
 	}
 	tests := []struct {
 		name    string
@@ -2288,7 +2289,7 @@ func TestDefaultApiService_GetForkedRepositories(t *testing.T) {
 			a := &DefaultApiService{
 				client: tt.fields.client,
 			}
-			got, err := a.GetForkedRepositories(tt.args.projectKey)
+			got, err := a.GetForkedRepositories(tt.args.projectKey, tt.args.repositorySlug)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("DefaultApiService.GetForkedRepositories() error = %v, wantErr %v", err, tt.wantErr)
 				return
