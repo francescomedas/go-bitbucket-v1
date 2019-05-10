@@ -11993,19 +11993,21 @@
  @param userSlug the slug for the user changing their status
  @param pullRequestId2 the id of the pull request within the repository
  @return */
- func (a *DefaultApiService) UpdateStatus(pullRequestID int64, userSlug string, pullRequestId2 int64) (*APIResponse, error) {
+ func (a *DefaultApiService) UpdateStatus(projectKey, repositorySlug, userSlug string, pullRequestID int64, localVarPostBody interface{}) (*APIResponse, error) {
 	 var (
 		 localVarHTTPMethod = strings.ToUpper("Put")
-		 localVarPostBody   interface{}
 		 localVarFileName   string
 		 localVarFileBytes  []byte
 	 )
  
 	 // create path and map variables
 	 localVarPath := a.client.cfg.BasePath + "/api/1.0/projects/{projectKey}/repos/{repositorySlug}/pull-requests/{pullRequestId}/participants/{userSlug}"
-	 localVarPath = strings.Replace(localVarPath, "{"+"pullRequestId"+"}", fmt.Sprintf("%v", pullRequestID), -1)
+	 localVarPath = strings.Replace(localVarPath, "{"+"projectKey"+"}", fmt.Sprintf("%v", projectKey), -1)
+	 localVarPath = strings.Replace(localVarPath, "{"+"repositorySlug"+"}", fmt.Sprintf("%v", repositorySlug), -1)
 	 localVarPath = strings.Replace(localVarPath, "{"+"userSlug"+"}", fmt.Sprintf("%v", userSlug), -1)
-	 localVarPath = strings.Replace(localVarPath, "{"+"pullRequestId"+"}", fmt.Sprintf("%v", pullRequestId2), -1)
+	 localVarPath = strings.Replace(localVarPath, "{"+"pullRequestId"+"}", fmt.Sprintf("%v", pullRequestID), -1)
+
+	 fmt.Println(localVarPath)
  
 	 localVarHeaderParams := make(map[string]string)
 	 localVarQueryParams := url.Values{}
