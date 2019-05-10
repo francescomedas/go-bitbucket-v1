@@ -12006,8 +12006,6 @@
 	 localVarPath = strings.Replace(localVarPath, "{"+"repositorySlug"+"}", fmt.Sprintf("%v", repositorySlug), -1)
 	 localVarPath = strings.Replace(localVarPath, "{"+"userSlug"+"}", fmt.Sprintf("%v", userSlug), -1)
 	 localVarPath = strings.Replace(localVarPath, "{"+"pullRequestId"+"}", fmt.Sprintf("%v", pullRequestID), -1)
-
-	 fmt.Println(localVarPath)
  
 	 localVarHeaderParams := make(map[string]string)
 	 localVarQueryParams := url.Values{}
