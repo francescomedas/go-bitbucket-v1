@@ -353,7 +353,7 @@
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param pullRequestId the ID of the pull request within the repository
  @return */
- func (a *DefaultApiService) CanMerge(pullRequestID int64) (*APIResponse, error) {
+ func (a *DefaultApiService) CanMerge(projectKey, repositorySlug string, pullRequestID int64) (*APIResponse, error) {
 	 var (
 		 localVarHTTPMethod = strings.ToUpper("Get")
 		 localVarPostBody   interface{}
@@ -363,6 +363,8 @@
  
 	 // create path and map variables
 	 localVarPath := a.client.cfg.BasePath + "/api/1.0/projects/{projectKey}/repos/{repositorySlug}/pull-requests/{pullRequestId}/merge"
+	 localVarPath = strings.Replace(localVarPath, "{"+"projectKey"+"}", fmt.Sprintf("%v", projectKey), -1)
+	 localVarPath = strings.Replace(localVarPath, "{"+"repositorySlug"+"}", fmt.Sprintf("%v", repositorySlug), -1)
 	 localVarPath = strings.Replace(localVarPath, "{"+"pullRequestId"+"}", fmt.Sprintf("%v", pullRequestID), -1)
  
 	 localVarHeaderParams := make(map[string]string)
